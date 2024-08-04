@@ -1,5 +1,5 @@
 const url = "//localhost:3500"
-export async function checkAccessToken(accessToken: string) {
+export async function checkAccessToken(accessToken: string): Promise<boolean> {
     try {
         const myHeaders = new Headers(); 
         myHeaders.append("Content-Type", "application/json");
@@ -9,12 +9,14 @@ export async function checkAccessToken(accessToken: string) {
             headers:myHeaders,
          });
          if (response.ok) {
-            console.log(response)
-            
+            console.log(response) ;
+            return true 
          }
+       return false
     
     } catch (error) {
         console.log(error);
     }
+    return false
     
 }
