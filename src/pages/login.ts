@@ -11,6 +11,7 @@ export async function loginPage () {
         <input type="submit" value="Login""></input>
 
         </form>
+        <p>Don't have an account ? <a href='/#register'>register</a></p>
         `
         const loginFrom = document.getElementById("login-form");
         loginFrom?.addEventListener("submit", async (event) => {
