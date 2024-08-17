@@ -1,4 +1,4 @@
-const url = "//localhost:3500"
+import url from "../config/url";
 export async function checkAccessToken(accessToken: string): Promise<boolean> {
     try {
         const myHeaders = new Headers(); 

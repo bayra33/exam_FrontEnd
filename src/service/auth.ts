@@ -1,4 +1,4 @@
-const url ="http://localhost:3500";
+import url from "../config/url";
 export async function login(username:string, password:string){
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -11,6 +11,7 @@ export async function login(username:string, password:string){
         const data = await response.json();
         console.log("Login successful:", data);
         localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem("username", data.username);
         window.location.href = "/"
     }else{
         const errorData= await response.json();

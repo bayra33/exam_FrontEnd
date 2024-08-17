@@ -1,5 +1,22 @@
 body{
-    font-family:'Times New Roman', Times, serif
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    padding: 0;
+}
+#navbar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aliceblue;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#navbar-right-side{
+    display:flex;
+    align-items: center;
+}
+#Logout-Button{
+    margin-left: 10px;
 }
 #login-form{
     background-color: aquamarine;
@@ -8,4 +25,14 @@ body{
     align-items: center;
     gap: 4px;
     padding: 20px;
+}
+.exam{
+    border:2px solid grey ;
+    margin: 20px;
+    padding: 20px;
+   border-radius:5px;
+   transition: background-color 0.1s ease-in-out;
+}
+.exam:hover{
+    background-color: grey;
 }
