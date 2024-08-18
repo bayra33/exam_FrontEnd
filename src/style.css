@@ -32,7 +32,12 @@ body{
     padding: 20px;
    border-radius:5px;
    transition: background-color 0.1s ease-in-out;
+   display: flex;
+   justify-content: space-between;
 }
 .exam:hover{
     background-color: grey;
+}
+.mine {
+    background-color: greenyellow;
 }

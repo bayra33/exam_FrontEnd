@@ -4,7 +4,7 @@ export async function homePage() {
   const app = document.getElementById("app");
 
   const accessToken = localStorage.getItem("accessToken");
-  const username = localStorage.getItem("username")
+  const username = localStorage.getItem("username");
   let loggedIn: boolean = true;
   if (accessToken) {
     const checkBool: boolean = await checkAccessToken(accessToken);
@@ -20,21 +20,27 @@ export async function homePage() {
   if (app) {
     if (loggedIn) {
       const exams = await getExams();
-      let examsHTML = ""
-      exams.forEach((exam:{name:any; _id:any}) => {
-            examsHTML += `
-            <a href="#exams#${exam._id}">
-              <div class='exam' id='${exam._id}'>
-                <h4>${exam.name}</h4>
+      let examsHTML = "";
+      exams.forEach((exam: {
+        username: string | null; name: any; _id: any 
+}) => {
+        examsHTML += `
+           
+              <div class='exam ${exam.username === username ? 'mine' : ''}' id='${exam._id}'>
+              <a href="#exams#${exam._id}">    <h4>${exam.name}</h4></a>
+               ${exam.username === username ? "<button class='delete-button'>Delete</button>" : ''}
               </div>
-            </a>
-            `
+            
+            `;
       });
       app.innerHTML = ` 
      <div id="navbar">
                   <div>
                   <h1>  Exam <h1>
 
+                  </div>
+                  <div>
+                  <a href='#add-exam'><button>Add Exam</button></a>
                   </div>
                 <div id="navbar-right-side">
                 <h2>${username} <h2>
@@ -46,6 +52,14 @@ export async function homePage() {
      </div>
                
         `;
+        const deleteButtons = document.querySelectorAll(".delete-Button");
+
+        deleteButtons?.forEach ((button:any) => {
+          button.addEventListener("click",async () => {
+            const examId = button.closest('.exam').id
+            console.log(examId)
+          })
+        })
 
       const logoutButton = document.getElementById("Logout-Button");
       logoutButton?.addEventListener("click", () => {
